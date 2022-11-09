@@ -14,6 +14,30 @@ describe("Conjunto de testes app",()=>{
         expect(res.body.user).toBe(esperado);
     });
 
+    it ("Testando Clientes Listar",async()=>{
+
+        //cenário
+        const esperado="Ok";
+        //execução
+        const res=await request(app).get("/clientes/listar");
+        
+        //validação
+        //expect(res.text).toBe(esperado);
+        expect(res.status).toBe(200);
+    });
+
+    it ("Testando Clientes Listar Key",async()=>{
+
+        //cenário
+        const esperado="Ok";
+        //execução
+        const res=await request(app).get("/clientes/listar/:key");
+        
+        //validação
+        //expect(res.text).toBe(esperado);
+        expect(res.status).toBe(200);
+    });
+
     it("Ao salvar um cliente o endpoint deve retornar Ok",async()=>{
         const databaseSpy = jest.spyOn(database, 'gravarDados');
         databaseSpy.mockReturnValue(true);
